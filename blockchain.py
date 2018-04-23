@@ -6,7 +6,13 @@ from time import time
 from uuid import uuid4
 
 from flask import Flask, jsonify, request
-from urllib.parse import urlparse
+try:
+    from urllib.parse import urlparse
+except ImportError:
+     from urlparse import urlparse
+
+import sys
+import getopt
 
 class Blockchain(object):
     def __init__(self):
@@ -89,24 +95,23 @@ class Blockchain(object):
         验证证明: 是否hash(last_proof, proof)以4个0开头?
         """
         temp = '{last_proof}{proof}'.format(last_proof = last_proof, proof = proof)
-            guess = temp.encode()
-            guess_hash = hashlib.sha256(guess).hexdigest()
-            return guess_hash[:4] == "0000"
+        guess = temp.encode()
+        guess_hash = hashlib.sha256(guess).hexdigest()
+        return guess_hash[:4] == "0000"
 
-     def valid_chain(self, chain):
+    def valid_chain(self, chain):	
         """
         Determine if a given blockchain is valid
         :param chain: <list> A blockchain
         :return: <bool> True if valid, False if not
         """
-
-        last_block = chain[0]
+	last_block = chain[0]
         current_index = 1
 
         while current_index < len(chain):
             block = chain[current_index]
-            print(f'{last_block}')
-            print(f'{block}')
+            print('{last_block}'.format(last_block = last_block))
+            print('{block}'.format(block = block))
             print("\n-----------\n")
             # Check that the hash of the block is correct
             if block['previous_hash'] != self.hash(last_block):
@@ -246,8 +251,13 @@ def consensus():
 
     return jsonify(response), 200
 
-if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000)
+
+def main(argv)
+    opts, atgs = getopt(atgv, "p:")
+
+
+    if __name__ == '__main__':
+        app.run(host='0.0.0.0', port=5000)
 
 
 
