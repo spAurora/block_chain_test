@@ -1,7 +1,7 @@
 # block_chain_test
-A simple block chain test program.
+A simple block chain test program.<br>
 
-³ÌÐò¿ÉÔÚUbuntu16.0.4 Python2.7.*»µ¾³ÏÂÖ±½ÓÔËÐÐ
-ÐèÒªÅäÖÃFlask¿ò¼ÜÒÔ¼°ÆäËüimportµÄ°ü
-ÔÚ²»Í¬ÖÕ¶ËÍ¨¹ý²ÎÊý [-p ¶Ë¿ÚºÅ] Æô¶¯²»Í¬¶Ë¿Ú
-ÔËÐÐÐ§¹û½ØÍ¼ÔÚÎÄ¼þ¼Ð [ÔËÐÐ½ØÍ¼] ÏÂ
+ç¨‹åºå¯åœ¨Ubuntu16.0.4 Python2.7.*åå¢ƒä¸‹ç›´æŽ¥è¿è¡Œ<br>
+éœ€è¦é…ç½®Flaskæ¡†æž¶ä»¥åŠå…¶å®ƒimportçš„åŒ…<br>
+åœ¨ä¸åŒç»ˆç«¯é€šè¿‡å‚æ•° [-p ç«¯å£å·] å¯åŠ¨ä¸åŒç«¯å£<br>
+è¿è¡Œæ•ˆæžœæˆªå›¾åœ¨æ–‡ä»¶å¤¹<è¿è¡Œæˆªå›¾>ä¸‹
