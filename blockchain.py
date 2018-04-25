@@ -11,6 +11,8 @@ try:
 except ImportError:
      from urlparse import urlparse
 
+import requests
+
 import sys
 import getopt
 
@@ -197,8 +199,11 @@ def mine():
   
 @app.route('/transactions/new', methods=['POST'])
 def new_transaction():
-    values = request.get_json()
+    #values = request.get_json()
     # Check that the required fields are in the POST'ed data
+    data = request.data
+    
+    values =  json.loads(data)
     required = ['sender', 'recipient', 'amount']
     if not all(k in values for k in required):
         return 'Missing values', 400
@@ -218,9 +223,10 @@ def full_chain():
 #注册结点
 @app.route('/nodes/register', methods=['POST'])
 def register_nodes():
-    values = request.get_json()
-
-    nodes = values.get('nodes')
+    values = request.data
+    
+    j_data =  json.loads(values)
+    nodes = j_data.get('nodes')
     if nodes is None:
         return "Error: Please supply a valid list of nodes", 400
 
@@ -252,12 +258,16 @@ def consensus():
     return jsonify(response), 200
 
 
-def main(argv)
-    opts, atgs = getopt(atgv, "p:")
+def main(argv):
+    opts, args = getopt.getopt(sys.argv[1:], "p:")
+    for op, value in opts:
+        if op == "-p":
+            input_port = int(value)
+    return input_port
 
-
-    if __name__ == '__main__':
-        app.run(host='0.0.0.0', port=5000)
+if __name__ == '__main__':
+    input_port = main(sys.argv[1:])
+    app.run(host='0.0.0.0', port=input_port)
 
 
 
